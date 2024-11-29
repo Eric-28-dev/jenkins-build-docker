@@ -1,5 +1,5 @@
 FROM nginx:latest
-RUN sed -i 's/nginx/eric/g' docker build -t eric/nginx .
+RUN sed -i 's/nginx/eric/g' /usr/share/nginx/html/index.html
 EXPOSE 80
 
 
