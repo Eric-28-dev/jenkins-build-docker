@@ -1,4 +1,4 @@
 FROM nginx:latest
-RUN: sed -i 's/nginx/eric/g' /usr/share/nginx/html/index.html
+RUN: sed -i 's/nginx/eric/g' /home/eric/repo
 EXPOSE 80
 
