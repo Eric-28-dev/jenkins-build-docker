@@ -1,22 +1,21 @@
-node{
-  def app
-    
-    stage('Clone') {
-    
-    }
 
-    stage('Build image') {
-       app = docker.build("eric/nginx")
-    }
-
-    stage('Run image') {
-        docker.image('eric/nginx').withRun('-p 80:80') { c ->
-
-        sh 'docker ps'
-
-        sh 'curl localhost'
-
-    }
-
+pipeline {
+    agent any
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git url: 'https://github.com/Eric-28-dev/jenkins-build-docker'
+            }
+        }
+        stage('Verify Workspace') {
+            steps {
+                sh 'pwd && ls -l'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t eric/nginx .'
+            }
+        }
     }
 }
